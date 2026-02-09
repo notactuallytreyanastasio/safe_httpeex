@@ -1,5 +1,17 @@
 # Project Instructions
 
+## READ-ONLY External References — HARD BOUNDARY
+
+**NEVER write, edit, commit, delete, or run destructive commands in these directories:**
+
+- `../httpeex` — Reference implementation (read source, read decision graph, nothing else)
+- `../temper` — Temper compiler source (read docs, read tests, read source, nothing else)
+
+These are reference codebases. You may `Read`, `Grep`, `Glob`, and run read-only git commands (`git log`, `git show`, `git diff`) against them. You must NEVER:
+- Create, edit, or delete files there
+- Run `git commit`, `git push`, `git checkout`, `git reset`, or any mutating git command there
+- Run build commands, install dependencies, or modify state there
+
 ## Decision Graph Workflow
 
 **THIS IS MANDATORY. Log decisions IN REAL-TIME, not retroactively.**
