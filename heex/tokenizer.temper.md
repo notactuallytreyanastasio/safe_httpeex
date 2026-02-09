@@ -176,6 +176,8 @@ export class Tokenizer(
     pos = String.begin;
     line = 1;
     column = 1;
+    errors = new ListBuilder<String>();
+    tokens = new ListBuilder<Token>();
   }
 
   // Check if we've consumed all input

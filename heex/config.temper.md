@@ -32,8 +32,7 @@ Import the main module.
 
 ```temper
 import(".");
-// TODO: Re-enable once tests submodule works
-// import("./tests");
+import("./tests");
 ```
 
 ## Module Structure
@@ -61,7 +60,7 @@ untrusted user content (`append`, which auto-escapes). This makes XSS
 ### Tagged String Integration
 
 `SafeHtmlBuilder` can be used as a Temper tagged string tag:
-```
+```text
 SafeHtml"<div>${userContent}</div>"
 ```
 The compiler routes literal parts to `appendSafe` and `${expr}` to `append`.

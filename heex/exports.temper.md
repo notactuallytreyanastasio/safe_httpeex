@@ -102,7 +102,7 @@ export let parseAndValidate(input: String): Boolean throws Bubble {
 Export the SafeHtmlBuilder type for direct use as a tagged string tag.
 Consumers can write safe HTML templates directly:
 
-```
+```text
 let html = SafeHtml"<div class=\"container\">${userContent}</div>";
 ```
 
@@ -120,7 +120,7 @@ all parse errors with line and column information.
 
 Example usage:
 
-```
+```text
 // In consuming code (pseudocode):
 // let doc = parseTemplate("<div>{@name}</div>") orelse bubble();
 // let html = renderToHtml(doc);

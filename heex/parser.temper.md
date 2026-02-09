@@ -170,6 +170,7 @@ export class Parser(
   public constructor(tokenList: List<Token>) {
     tokens = tokenList;
     pos = 0;
+    errors = new ListBuilder<String>();
   }
 
   // Check if we've consumed all tokens

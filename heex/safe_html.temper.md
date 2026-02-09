@@ -15,13 +15,13 @@ The builder implements Temper's **tagged string accumulator pattern**:
 When used as a tagged string, the Temper compiler automatically routes literal
 string parts to `appendSafe` and `${expr}` interpolations to `append`:
 
-```
+```text
 SafeHtml"<div>${userContent}</div>"
 ```
 
 desugars to:
 
-```
+```text
 let acc = new SafeHtmlBuilder();
 acc.appendSafe("<div>");
 acc.append(userContent);    // HTML-escaped automatically
@@ -87,7 +87,7 @@ methods required by Temper's tagged string system.
 
 ```temper
 export class SafeHtmlBuilder {
-  var parts: ListBuilder<String>;
+  private var parts: ListBuilder<String>;
 
   public constructor() {
     parts = new ListBuilder<String>();
