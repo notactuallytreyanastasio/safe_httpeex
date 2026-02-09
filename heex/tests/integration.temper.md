@@ -247,3 +247,57 @@ test("parses mixed content") {
   assert(doc.children.length >= 1);
 }
 ```
+
+## SafeHtmlBuilder Tagged String Tests
+
+These tests prove the **compiler-enforced safety guarantee**: when SafeHtmlBuilder
+is used as a tagged string tag, the compiler automatically routes literal parts
+to `appendSafe` (no escaping) and `${expr}` interpolations to `append` (auto-escaped).
+
+```temper
+test("tagged string basic usage") {
+  let html = SafeHtmlBuilder"<div>Hello</div>";
+  assert(html == "<div>Hello</div>");
+}
+
+test("tagged string escapes interpolated content") {
+  let malicious = "<script>alert('xss')</script>";
+  let html = SafeHtmlBuilder"<div>${malicious}</div>";
+  assert(html == "<div>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</div>");
+}
+
+test("tagged string preserves literal angle brackets") {
+  let html = SafeHtmlBuilder"<p>safe</p>";
+  assert(html == "<p>safe</p>");
+}
+
+test("tagged string escapes ampersand in interpolation") {
+  let text = "Tom & Jerry";
+  let html = SafeHtmlBuilder"<span>${text}</span>";
+  assert(html == "<span>Tom &amp; Jerry</span>");
+}
+
+test("tagged string escapes all 5 critical chars") {
+  let dangerous = "& < > \" '";
+  let html = SafeHtmlBuilder"${dangerous}";
+  assert(html == "&amp; &lt; &gt; &quot; &#39;");
+}
+
+test("tagged string multiple interpolations") {
+  let name = "<b>Bob</b>";
+  let role = "admin\"root";
+  let html = SafeHtmlBuilder"<div>${name} - ${role}</div>";
+  assert(html == "<div>&lt;b&gt;Bob&lt;/b&gt; - admin&quot;root</div>");
+}
+
+test("tagged string empty interpolation") {
+  let empty = "";
+  let html = SafeHtmlBuilder"<p>${empty}</p>";
+  assert(html == "<p></p>");
+}
+
+test("tagged string only literal") {
+  let html = SafeHtmlBuilder"<br />";
+  assert(html == "<br />");
+}
+```

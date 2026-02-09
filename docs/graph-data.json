@@ -516,6 +516,94 @@
       "created_at": "2026-02-09T05:32:50.182537-05:00",
       "updated_at": "2026-02-09T05:32:50.182537-05:00",
       "metadata_json": "{\"branch\":\"main\",\"confidence\":90}"
+    },
+    {
+      "id": 48,
+      "change_id": "bd9c9255-a7ea-491e-b252-c762d33cf532",
+      "node_type": "observation",
+      "title": "Rust backend actually fails to compile (not just 'tests not run'). 13 errors: (1) E0434 — Temper generates fn items capturing outer mutable vars (var first = true pattern in JSON rendering), Rust requires closures instead. (2) E0308 — mutable vars should be Arc<RwLock<T>> but codegen emits bare bool in when/pattern-match branches. Both are Temper Rust codegen bugs, not source code issues.",
+      "description": null,
+      "status": "pending",
+      "created_at": "2026-02-09T05:34:12.224761-05:00",
+      "updated_at": "2026-02-09T05:34:12.224761-05:00",
+      "metadata_json": "{\"branch\":\"main\",\"confidence\":95}"
+    },
+    {
+      "id": 49,
+      "change_id": "1a10a34c-22c9-4db3-8ffe-111030d1cfbc",
+      "node_type": "goal",
+      "title": "Prove the value of safe_httpeex: tagged strings, Python integration, concrete comparison",
+      "description": null,
+      "status": "pending",
+      "created_at": "2026-02-09T06:05:09.791249-05:00",
+      "updated_at": "2026-02-09T06:05:09.791249-05:00",
+      "metadata_json": "{\"branch\":\"main\",\"confidence\":85}"
+    },
+    {
+      "id": 50,
+      "change_id": "915a9771-9d95-4fbc-9706-8b9c381e0b7a",
+      "node_type": "action",
+      "title": "Added 8 tagged string tests proving compiler-enforced safety",
+      "description": null,
+      "status": "pending",
+      "created_at": "2026-02-09T06:08:24.152055-05:00",
+      "updated_at": "2026-02-09T06:08:24.152055-05:00",
+      "metadata_json": "{\"branch\":\"main\",\"confidence\":95,\"files\":[\"heex/tests/integration.temper.md\"]}"
+    },
+    {
+      "id": 51,
+      "change_id": "78a854ee-e5d2-4bb5-97b4-39d69586a9ea",
+      "node_type": "outcome",
+      "title": "Tagged string syntax SafeHtmlBuilder\"...\" works on all 3 backends. Compiler correctly routes literals to appendSafe and interpolations to append. 80/80 tests pass on JS, Python, Lua.",
+      "description": null,
+      "status": "pending",
+      "created_at": "2026-02-09T06:08:24.164276-05:00",
+      "updated_at": "2026-02-09T06:08:24.164276-05:00",
+      "metadata_json": "{\"branch\":\"main\",\"confidence\":95}"
+    },
+    {
+      "id": 52,
+      "change_id": "8dcd3629-95e5-4612-9117-242d998fd432",
+      "node_type": "action",
+      "title": "Created Python demo and Django integration examples",
+      "description": null,
+      "status": "pending",
+      "created_at": "2026-02-09T06:08:27.804511-05:00",
+      "updated_at": "2026-02-09T06:08:27.804511-05:00",
+      "metadata_json": "{\"branch\":\"main\",\"confidence\":90,\"files\":[\"examples/python_demo.py\",\"examples/django_integration.py\"]}"
+    },
+    {
+      "id": 53,
+      "change_id": "cc4c494c-8a5a-499a-be9d-4d468f44d865",
+      "node_type": "outcome",
+      "title": "Python demo runs successfully: parse/render, XSS prevention, 5-char escaping, SafeHtmlBuilder direct usage, AST inspection. Django integration shows template tag and mark_safe pattern.",
+      "description": null,
+      "status": "pending",
+      "created_at": "2026-02-09T06:08:27.816410-05:00",
+      "updated_at": "2026-02-09T06:08:27.816410-05:00",
+      "metadata_json": "{\"branch\":\"main\",\"confidence\":90}"
+    },
+    {
+      "id": 54,
+      "change_id": "b998656a-44cf-4a37-92a7-3c8c8d970a20",
+      "node_type": "action",
+      "title": "Wrote COMPARISON.md documenting 7 unescaped code paths in original",
+      "description": null,
+      "status": "pending",
+      "created_at": "2026-02-09T06:08:31.398024-05:00",
+      "updated_at": "2026-02-09T06:08:31.398024-05:00",
+      "metadata_json": "{\"branch\":\"main\",\"confidence\":90,\"files\":[\"COMPARISON.md\"]}"
+    },
+    {
+      "id": 55,
+      "change_id": "2c72dbd4-22f8-4ce8-abc8-35690cf88c4d",
+      "node_type": "observation",
+      "title": "Original httpeex has 7 completely unescaped code paths (expressions, dynamic/spread/special attrs, EEx, comments). Only text nodes and static attrs go through escaping. escapeHtml handles 3 chars, escapeAttr handles 4. Neither handles single quotes. safe_httpeex fixes all of these via SafeHtmlBuilder with 5-char coverage.",
+      "description": null,
+      "status": "pending",
+      "created_at": "2026-02-09T06:08:31.412992-05:00",
+      "updated_at": "2026-02-09T06:08:31.412992-05:00",
+      "metadata_json": "{\"branch\":\"main\",\"confidence\":95}"
     }
   ],
   "edges": [
@@ -903,6 +991,83 @@
       "weight": 1.0,
       "rationale": "Verification of implementation across backends",
       "created_at": "2026-02-09T05:32:54.205986-05:00"
+    },
+    {
+      "id": 36,
+      "from_node_id": 47,
+      "to_node_id": 48,
+      "from_change_id": "75a5e21b-72f2-422b-8a2e-f4d0b41d5818",
+      "to_change_id": "bd9c9255-a7ea-491e-b252-c762d33cf532",
+      "edge_type": "leads_to",
+      "weight": 1.0,
+      "rationale": "Detailed Rust failure analysis",
+      "created_at": "2026-02-09T05:34:12.232746-05:00"
+    },
+    {
+      "id": 37,
+      "from_node_id": 49,
+      "to_node_id": 50,
+      "from_change_id": "1a10a34c-22c9-4db3-8ffe-111030d1cfbc",
+      "to_change_id": "915a9771-9d95-4fbc-9706-8b9c381e0b7a",
+      "edge_type": "leads_to",
+      "weight": 1.0,
+      "rationale": "Tagged string tests",
+      "created_at": "2026-02-09T06:08:24.169733-05:00"
+    },
+    {
+      "id": 38,
+      "from_node_id": 50,
+      "to_node_id": 51,
+      "from_change_id": "915a9771-9d95-4fbc-9706-8b9c381e0b7a",
+      "to_change_id": "78a854ee-e5d2-4bb5-97b4-39d69586a9ea",
+      "edge_type": "leads_to",
+      "weight": 1.0,
+      "rationale": "Verified",
+      "created_at": "2026-02-09T06:08:24.175721-05:00"
+    },
+    {
+      "id": 39,
+      "from_node_id": 49,
+      "to_node_id": 52,
+      "from_change_id": "1a10a34c-22c9-4db3-8ffe-111030d1cfbc",
+      "to_change_id": "8dcd3629-95e5-4612-9117-242d998fd432",
+      "edge_type": "leads_to",
+      "weight": 1.0,
+      "rationale": "Python integration",
+      "created_at": "2026-02-09T06:08:27.822355-05:00"
+    },
+    {
+      "id": 40,
+      "from_node_id": 52,
+      "to_node_id": 53,
+      "from_change_id": "8dcd3629-95e5-4612-9117-242d998fd432",
+      "to_change_id": "cc4c494c-8a5a-499a-be9d-4d468f44d865",
+      "edge_type": "leads_to",
+      "weight": 1.0,
+      "rationale": "Verified",
+      "created_at": "2026-02-09T06:08:27.827907-05:00"
+    },
+    {
+      "id": 41,
+      "from_node_id": 49,
+      "to_node_id": 54,
+      "from_change_id": "1a10a34c-22c9-4db3-8ffe-111030d1cfbc",
+      "to_change_id": "b998656a-44cf-4a37-92a7-3c8c8d970a20",
+      "edge_type": "leads_to",
+      "weight": 1.0,
+      "rationale": "Comparison document",
+      "created_at": "2026-02-09T06:08:31.420504-05:00"
+    },
+    {
+      "id": 42,
+      "from_node_id": 49,
+      "to_node_id": 55,
+      "from_change_id": "1a10a34c-22c9-4db3-8ffe-111030d1cfbc",
+      "to_change_id": "2c72dbd4-22f8-4ce8-abc8-35690cf88c4d",
+      "edge_type": "leads_to",
+      "weight": 1.0,
+      "rationale": "Key finding",
+      "created_at": "2026-02-09T06:08:31.426728-05:00"
     }
   ]
 }
