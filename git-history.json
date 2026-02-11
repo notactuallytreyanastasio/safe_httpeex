@@ -1,0 +1,26 @@
+[
+  {
+    "hash": "72ec2d1828d559bfd605ac8de76cf8ea5ca1dc77",
+    "short_hash": "72ec2d1",
+    "author": "Robert Grayson",
+    "date": "2026-02-09T05:31:32-05:00",
+    "message": "test: add 72-test suite with safe rendering verification\n\nPort 17 tokenizer tests, 22 parser tests from httpeex reference.\nAdd 33 integration tests including 15 safe-rendering-specific tests\n(XSS prevention, structure preservation, escaping verification).\n\nFix secondary constructor field initialization (ListBuilder not\ninitialized when using class parameters + secondary constructor).\nFix untagged markdown code blocks being compiled by Temper.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>",
+    "files_changed": 9
+  },
+  {
+    "hash": "22b18553ce4a953033c6b80146f8e3167b5f7347",
+    "short_hash": "22b1855",
+    "author": "Robert Grayson",
+    "date": "2026-02-09T05:21:42-05:00",
+    "message": "feat: implement safe HEEx parser with SafeHtmlBuilder accumulator\n\nCore modules (2,883 lines of Temper literate programming):\n- safe_html.temper.md: SafeHtmlBuilder with append/appendSafe/accumulated\n- ast.temper.md: AST node definitions (ported from httpeex)\n- tokenizer.temper.md: Lexical analysis with 20+ token types (ported)\n- parser.temper.md: Recursive descent parser (ported)\n- renderer.temper.md: Safe renderer using SafeHtmlBuilder for HTML output\n- config.temper.md: Package metadata for safe-heex\n- exports.temper.md: Public API with SafeHtml tagged string export\n\nKey change from httpeex: renderer uses SafeHtmlBuilder instead of\nStringBuilder. Template structure goes through appendSafe() (trusted),\nuser content goes through append() (auto-escaped for XSS prevention).\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>",
+    "files_changed": 7
+  },
+  {
+    "hash": "a85e50a920e6db0705e9941a12ca94521e510aab",
+    "short_hash": "a85e50a",
+    "author": "--replace-all",
+    "date": "2026-02-09T05:03:40-05:00",
+    "message": "docs: add knowledge cache, research docs, and read-only boundary rules\n\n- CONTEXT.md: 748-line comprehensive reference for safe_httpeex implementation\n- INFO.md: 277-line research cache with HEEx syntax, Temper patterns, architecture\n- CLAUDE.md: added READ-ONLY boundary rule for ../httpeex and ../temper\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>",
+    "files_changed": 3
+  }
+]
